@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Audio Page</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+	<script src="firebase.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+	<style type="text/css">
+		.parallax{
+			background-image: url("images/dr567.jpg");
+			min-height: 685px;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+justify-content: center;
+align-items: center;
+		}
+		#playlist
+		{
+			width: 100%;
+			height: auto;
+			background-color: #2E2E2E;
+			position: absolute;
+      margin-bottom: 5%;
+		}
+		
+		.parent {
+  			height: 360px;
+			width: 28%;
+			/*background-color: red;*/
+			overflow: hidden;
+			float: left;
+      		margin: 2.5%;
+		}
+
+		.child {
+  			width: 100%;
+  			height: 100%;
+  			/*background-color: black; /* fallback color */
+  			/*background-color: blue;*/
+  			background-position: center;
+  			background-size: cover;
+  			transition: all .5s;
+  			padding: 25%;
+			}
+			.parent:hover .child,
+			.parent:focus .child {
+  			transform: scale(1.2);
+			}
+#btm_player
+{
+	background-color: white;
+	overflow: hidden;	
+	height: 10%;	
+	border-radius: 5% 5% 0% 0%;
+	align-items: flex-start;
+}
+.control
+{
+	float: left;
+	margin-right: 75%;
+	width: 20%;
+	height: 100%;
+	/*background-color: black;*/
+	padding: 2%;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.5s ease;
+}
+.button {
+  width: 100px;
+  height: 100px;
+  /*background-image: url('images/xyz.png');*/
+  opacity: 1;
+ 	margin-left: 25%;
+ 	margin-top: 10%; 
+   background-position: center;
+   background-size: cover;
+  transition: opacity .35s ease;
+  cursor: pointer;
+}
+audio
+{
+	margin-left: -13%;
+	margin-top: 30%;
+  transition: opacity .35s ease;
+  overflow: visible;
+  cursor: pointer;
+ opacity: 0.5;
+}
+.button a {
+  width: 200px;
+  padding: 12px 48px;
+  text-align: center;
+  color: white;
+  border: solid 0px white;
+  z-index: 1;
+}
+
+/*.parent:hover .button{
+  opacity: 1;
+}*/
+.btn-primary-outline {
+  background-color: transparent;
+  border-color: #ccc;
+}
+
+	</style>
+
+</head>
+<body onload="feed()" style="background-color: #2E2E2E">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="margin-top: 0px;">
+
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="index.html">Darshan Raval</a>
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="video.html">Videos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="audio.html">Audios
+            <!-- <span class="sr-only">(current)</span> -->
+            </a>
+      </li>
+    </ul>
+    <div class="dropdown">
+    <button class="btn btn-primary-outline dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="name" style="margin-right: 10px;font-size: 20px;font-family: sans-serif;color: white">Darshan Raval</button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: transparent;border-color: #ccc;border:none;">
+    <a class="dropdown-item" style="background-color: transparent;border-color: #ccc;"><button type="button" class="btn btn-primary-outline" onclick="logOut()" id="log" style="position: relative;margin-left:100%;">Logout</button></a>
+    </div> 
+</div>
+    <!-- Links -->
+    <img src="images/dr19.jpg" style="height: 60px;width:60px;border-radius: 20px;" id="photo">
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+	<div class="parallax">
+   <div style="width: 50%;margin-left: 13%">
+        <div style="font-size: 3vw;color: white;font-family: sans-serif;">Darshan Raval Audio Song's</div>
+        <div style="width: 78%;background-color: white;border-color: white;border: 1px white solid;margin-bottom: 4%;"></div>
+    </div> 
+  </div>
+
+<div style="height:100px;background-color:#2E2E2E;font-size:36px"></div>
+<div id="playlist">
+</div>
+<script type="text/javascript">
+  $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+            });
+</script>
+<script type="text/javascript">
+	firebase.auth().onAuthStateChanged(function(user){
+            if(user)
+            {
+                document.getElementById("name").innerHTML=user.displayName;
+                document.getElementById("photo").src=user.photoURL;
+            }
+        })
+</script>
+<script type="text/javascript">
+	const preObject=document.getElementById("playlist");
+	function feed()
+{
+ // alert("Feeds");
+ var flag=0;
+  var uprefUpload= firebase.database().ref().child('Audios/');
+  var uprefList=uprefUpload;
+  // alert(uprefUpload);
+  uprefUpload.on('value',snap =>{
+
+     for(key in snap.val())
+    {
+    	// alert(key);
+      flag=1;
+      var file = snap.val()[key];
+      // alert(file.downloadPath);
+      // alert(file.imageurl);
+      preObject.innerHTML+="<div class=parent><a href="+file.imageurl+" data-toggle=lightbox><img src="+file.downloadPath+" style=width:100%;height:100%></a></div>";
+    }
+    if(flag==0)
+      alert("No files found for download");
+  });
+}
+function logOut(){
+          firebase.auth().signOut().then(function() {
+         // Sign-out successful.
+               window.open('index.html','_self');
+             // document.getElementById("name").innerHTML="Darshan raval";
+             //    document.getElementById("photo").src="images/dr19.jpg";
+             //    document.getElementById("footeremail").innerHTML="darshanRaval@gmail.com";
+             //    document.getElementById("log").innerHTML="Log In";
+            }).catch(function(error) {
+             // An error happened.
+            });
+      }
+</script>
+<script type="text/javascript">
+	$(function()
+	{
+		$('.button').click(function(){
+			$(this).css('opacity',0),
+			$(this).siblings("audio").css('opacity',1);
+		}),
+		$("audio").on('ended',function(){
+			$(this).css('opacity',0),
+			$(this).siblings(".button").css('opacity',1)
+			// $(this).siblings("audio").play()
+		});
+	});
+</script>
+<footer class="page-footer font-small stylish-color-dark " style="position: fixed;width: 100%;">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="" id="footeremail"></a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+</body>
+</html>

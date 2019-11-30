@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Video Page</title>
+	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+  <script src="firebase.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   <!-- <script src="//cdn.jsdelivr.net/npm/afterglowplayer@1.x"></script> -->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+
+	<style type="text/css">
+		.parallax{
+			background-image: url("images/dr508.jpg");
+			min-height: 685px;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+justify-content: center;
+align-items: center;
+		}
+		#independent
+		{
+			height: auto;
+			min-height: 50px;
+			width: 100%;
+			/*background-color: blue;*/
+      background-color: #2E2E2E ;
+			overflow: hidden;
+      /*display: flex;*//*
+      justify-content: center;
+      align-items: center;*/
+			padding: 2%;
+		}
+    .ekko-lightbox-loader>div>div
+    {
+      background-color: transparent;
+    }
+		.parent {
+  			height: 360px;
+			width: 28% ;
+			overflow: hidden;
+			float: left;
+      		margin: 2.5%;
+		}
+
+		.child {
+  			width: 100%;
+  			height: 100%;
+  			/*background-color: black; /* fallback color */
+  			background-position: center;
+  			background-size: cover;
+  			transition: all .5s;
+  			padding: 20%;
+			}
+			.parent:hover .poster,
+			.parent:focus .poster {
+  			transform: scale(1.2);
+			}
+			.poster
+			{
+				width: 100%;
+				height: 80%;
+				overflow: hidden;
+				transition: all .5s;
+			}
+			.title
+			{
+				height: 20%;
+				width: 100%;
+				color: blue;
+				background-color: white;
+			}
+  .button {
+  width: 100px;
+  height: 100px;
+  /*background-image: url('images/xyz.png');*/
+  opacity: 1;
+ 	margin-left: 25%;
+   background-position: center;
+   background-size: cover;
+  transition: opacity .35s ease;
+  cursor: pointer;
+}
+	.modal-container {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 100;
+		visibility: hidden;
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		-webkit-transition: opacity 0.3s ease-in;
+		-moz-transition: opacity 0.3s ease-in;
+		transition: opacity 0.3s ease-in;
+	}
+
+	.modal-container.show-modal {
+		visibility: visible;
+		opacity: 1;
+		-webkit-transition: opacity 0.3s ease-in;
+		-moz-transition: opacity 0.3s ease-in;
+		transition: opacity 0.3s ease-in;
+	}
+.parent.limit400 { height: 360px ;width: 28% }
+.parent.limit1200  { height: 360px;width: 28%}
+	.modal-container .modal-body {
+		position: absolute;
+		max-width: 500px;
+		height: 500px;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		margin: auto;
+		padding: 20px;
+		background-color: #fff;
+	}
+	.title
+	{
+		font-size: 20px;
+		padding: 5%;
+		background-color: black;
+		color: white;
+		align-items: center;
+		justify-content: center;
+		display: flex;
+	}
+  .btn-primary-outline {
+  background-color: transparent;
+  border-color: #ccc;
+}
+	</style>
+
+</head>
+<body onload="feed()" style="overflow-x: hidden;">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="margin-top: 0px;">
+
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="index.html">Darshan Raval</a>
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="video.html">Videos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="audio.html">Audios
+            <!-- <span class="sr-only">(current)</span> -->
+            </a>
+      </li>
+    </ul>
+    <div class="dropdown">
+    <button class="btn btn-primary-outline dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="name" style="margin-right: 10px;font-size: 20px;font-family: sans-serif;color: white">Darshan Raval</button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: transparent;border-color: #ccc;border:none;">
+    <a class="dropdown-item" style="background-color: transparent;border-color: #ccc;"><button type="button" class="btn btn-primary-outline" onclick="logOut()" id="log" style="position: relative;margin-left:100%;">Logout</button></a>
+    </div> 
+</div>
+    <!-- Links -->
+    <img src="images/dr19.jpg" style="height: 60px;width:60px;border-radius: 20px;" id="photo">
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+	<div class="parallax">
+   <div style="width: 50%;margin-left: 10%;">
+        <div style="font-size: 3vw;color: white;font-family: sans-serif;">Darshan Raval Video Song's</div>
+        <div style="width: 78%;background-color: white;border-color: white;border: 1px white solid;margin-bottom: 4%;"></div>
+    </div> 
+  </div>
+	<div style="height:80px;background-color:#2E2E2E;font-size:36px"></div>
+	<div id="independent">
+</div>
+<footer class="page-footer font-small stylish-color-dark " style="position: relative;margin-top: -0px;">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="" id="footeremail"></a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<script type="text/javascript">
+  $(window).on('resize', function() {
+    if($(window).width() > 700) {
+        $('.parent').addClass('limit1200');
+        $('.parent').removeClass('limit400');
+    }else{
+      // alert('sgnonoe');
+        $('.parent').addClass('limit400');
+        $('.parent').removeClass('limit1200');
+    }
+})
+</script>
+<script type="text/javascript">
+  const preObject=document.getElementById("independent");
+  function feed()
+{
+ // alert("Feeds");
+ var flag=0;
+  var uprefUpload= firebase.database().ref().child('Videos/');
+  var uprefList=uprefUpload;
+  uprefUpload.on('value',snap =>{
+
+     for(key in snap.val())
+    {
+      flag=1;
+      var file = snap.val()[key];
+      // alert("file.imageurl   "+file.downloadPath);
+      preObject.innerHTML+="<div class=parent><div class=poster><a href="+file.imageurl+" data-toggle=lightbox><img src="+file.downloadPath+" style=width:100%;height:100%></a></div><div class=title>"+file.filename+"</div></div>";
+    }
+    if(flag==0)
+      alert("No files found for download");
+  });
+}
+</script>
+<script type="text/javascript">
+	$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+            });
+</script>
+<script type="text/javascript">
+	firebase.auth().onAuthStateChanged(function(user){
+            if(user)
+            {
+                document.getElementById("name").innerHTML=user.displayName;
+                document.getElementById("photo").src=user.photoURL;
+            }
+        })
+  function logOut(){
+          firebase.auth().signOut().then(function() {
+         // Sign-out successful.
+               window.open('index.html','_self');
+             // document.getElementById("name").innerHTML="Darshan raval";
+             //    document.getElementById("photo").src="images/dr19.jpg";
+             //    document.getElementById("footeremail").innerHTML="darshanRaval@gmail.com";
+             //    document.getElementById("log").innerHTML="Log In";
+            }).catch(function(error) {
+             // An error happened.
+            });
+      }
+</script>
+</body>
+</html>

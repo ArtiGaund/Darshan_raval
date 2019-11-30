@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+	<script src="firebase.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  	<link rel="stylesheet" href="/resources/demos/style.css">
+  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+
+	<title>Admin Dashboard</title>
+	<script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+	<script src="firebase.js"></script>
+	<style type="text/css">
+		.button
+		{
+			height: 60px;
+			width: 60px;
+			color: white;
+			background-color: blue;
+			float: left;
+			margin: 10px;
+			cursor: pointer;
+			padding-left:10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="accordion">
+		<h3>Video</h3>
+		<div>
+			<label>Enter Video Name</label>
+			<input type="text" id="videoname" required><br>
+			<label>Video Poster File</label><br>
+			<input type="file" id="video" required><br>
+			<label>Video File</label><br>
+			<input type="file" id="v_image" required><br>
+			<button id="videobutton">Upload</button>
+			<progress value="0" max="100" id="uploadervideo">0%</progress>
+		</div>
+		<h3>Audio</h3>
+			<div>
+			<label>Enter Audio Name</label>
+			<input type="text" id="audioname" required><br>
+			<label>Audio Poster Image</label><br>
+			<input type="file" id="audio" required><br>
+			<label>Audio File</label><br>
+			<input type="file" id="a_image" required><br>
+			<button id="audiobutton">Upload</button>
+			<progress value="0" max="100" id="uploaderaudio">0%</progress>
+		</div>
+		<h3>Image</h3>
+			<div>
+			<label>Enter Image Name</label>
+			<input type="text" id="imagename" required><br>
+			<label>Image</label><br>
+			<input type="file" id="image" required><br>
+			<button id="imagebutton">Upload</button>
+			<progress value="0" max="100" id="uploaderimage">0%</progress>
+		</div>
+	</div>
+	<button><a href="index.html">Home</a></button>
+<script type="text/javascript">
+	$(function()
+	{
+		$(".accordion").accordion();
+	});
+</script>
+<script type="text/javascript">
+	var v_progress = document.getElementById("uploadervideo");
+	var a_progress = document.getElementById("uploaderaudio");
+	var i_progress = document.getElementById("uploaderimage");
+	var videobutton = document.getElementById("videobutton");
+	var audiobutton = document.getElementById("audiobutton");
+	var imagebutton=document.getElementById("imagebutton");
+	var videoname,audioname,imagename,url;
+	dbref = firebase.database();
+	// var pfile;
+	var ptask,stask;
+	videobutton.addEventListener('click',function(e){
+		var videofile = document.getElementById("video").files[0];
+		var vname= document.getElementById("videoname").value;
+		var videoimage = document.getElementById("v_image").files[0];
+		var imageurl,videourl,fileurl;
+		// Create Storage Reference
+		var pstorageRef = firebase.storage().ref('Video/'+vname+'/'+vname);
+		var sstorageRef = firebase.storage().ref('Video/'+vname+'/'+videoimage.name);
+		// Upload File
+		var vtask = pstorageRef.put(videofile);
+		alert(vname);
+		alert(videofile);
+			alert(videoimage);
+		//Update Progress Bar
+		ptask = pstorageRef;
+		stask = sstorageRef;
+		vtask.on('state_changed',
+			function progress(snapshot){
+				var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+				v_progress.value=percentage;
+			},
+			function error(err)
+			{
+				alert(err.code);
+			},
+			function()
+			{
+				ptask.getDownloadURL().then(function(downloadURL) {
+   				 alert('Video File available at', downloadURL);
+   				 fileurl=downloadURL;
+  				});
+			}
+			);
+		// ptask = pstorageRef;
+		var itask = sstorageRef.put(videoimage);
+		itask.on('state_changed',
+			function progress(snapshot){
+				var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+				v_progress.value=percentage;
+				// if(percentage==100)
+				// {
+				// 	stask = sstorageRef;
+				// 	ptask.getDownloadURL().then(function(url){
+				// 		// fileurl=url;
+				// 		// alert(url);
+				// 		add1(vname,url,"Videos");
+				// 	});
+					
+				// }
+			},
+			function error(err)
+			{
+				alert(err.code);
+			},
+			function()
+			{
+				stask.getDownloadURL().then(function(downloadURL) {
+   				 alert('Image File available at', downloadURL);
+  				});
+  				add1(vname,fileurl,"Videos");
+			}
+			);
+	});
+	// audiobutton.addEventListener('click',function(e){
+	// 	var audiofile = document.getElementById("audio").files[0];
+	// 	var aname= document.getElementById("audioname").value;
+	// 	var audioimage = document.getElementById("a_image").files[0];
+	// 	var imageurl,audiourl;
+	// 	// Create Storage Reference
+	// 	var pstorageRef = firebase.storage().ref('Audio/'+aname+'/'+aname);
+	// 	var sstorageRef = firebase.storage().ref('Audio/'+aname+'/'+audioimage.name);
+	// 	// Upload File
+	// 	var vtask = pstorageRef.put(audiofile);
+	// 	ptask = pstorageRef;
+	// 	stask = sstorageRef;
+	// 	alert(aname);
+	// 	alert(audiofile);
+	// 		alert(audioimage);
+	// 	//Update Progress Bar
+	// 	vtask.on('state_changed',
+	// 		function progress(snapshot){
+	// 			var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+	// 			a_progress.value=percentage;
+	// 		},
+	// 		function error(err)
+	// 		{
+	// 			alert(err.code);
+	// 		},
+	// 		);
+	// 	var itask = sstorageRef.put(audioimage);
+	// 	itask.on('state_changed',
+	// 		function progress(snapshot){
+	// 			var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+	// 			a_progress.value=percentage;
+	// 			if(percentage==100)
+	// 				ptask.getDownloadURL().then(function(url){
+	// 					// fileurl=url;
+	// 					// alert(url);
+	// 					add1(aname,url,"Audios");
+	// 				});
+					
+	// 		},
+	// 		function error(err)
+	// 		{
+	// 			alert(err.code);
+	// 		},
+	// 		);
+	// });
+	audiobutton.addEventListener('click',function(e){
+		var audiofile = document.getElementById("audio").files[0];
+		var aname= document.getElementById("audioname").value;
+		var audioimage = document.getElementById("a_image").files[0];
+		var imageurl,audiourl,fileurl;
+		// Create Storage Reference
+		var pstorageRef = firebase.storage().ref('Audio/'+aname+'/'+aname);
+		var sstorageRef = firebase.storage().ref('Video/'+aname+'/'+audioimage.name);
+		// Upload File
+		var vtask = pstorageRef.put(audiofile);
+		alert(aname);
+		alert(audiofile);
+			alert(audioimage);
+		//Update Progress Bar
+		ptask = pstorageRef;
+		stask = sstorageRef;
+		vtask.on('state_changed',
+			function progress(snapshot){
+				var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+				a_progress.value=percentage;
+			},
+			function error(err)
+			{
+				alert(err.code);
+			},
+			function()
+			{
+				ptask.getDownloadURL().then(function(downloadURL) {
+   				 alert('Audio File available at', downloadURL);
+   				 fileurl=downloadURL;
+  				});
+			}
+			);
+		// ptask = pstorageRef;
+		var itask = sstorageRef.put(audioimage);
+		itask.on('state_changed',
+			function progress(snapshot){
+				var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+				a_progress.value=percentage;
+				// if(percentage==100)
+				// {
+				// 	stask = sstorageRef;
+				// 	ptask.getDownloadURL().then(function(url){
+				// 		// fileurl=url;
+				// 		// alert(url);
+				// 		add1(vname,url,"Videos");
+				// 	});
+					
+				// }
+			},
+			function error(err)
+			{
+				alert(err.code);
+			},
+			function()
+			{
+				stask.getDownloadURL().then(function(downloadURL) {
+   				 alert('Image File available at', downloadURL);
+  				});
+  				add1(aname,fileurl,"Audios");
+			}
+			);
+	});
+		imagebutton.addEventListener('click',function(e){
+		var imagefile = document.getElementById("image").files[0];
+		var iname= document.getElementById("imagename").value;
+		var imageurl,audiourl;
+		// Create Storage Reference
+		var pstorageRef = firebase.storage().ref('Images/'+iname+'/'+iname);
+		// Upload File
+		var itask = pstorageRef.put(imagefile);
+		ptask = pstorageRef;
+		itask.on('state_changed',
+			function progress(snapshot){
+				var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+				i_progress.value=percentage;
+				if(percentage==100)
+					add2(iname,"Images");
+			},
+			function error(err)
+			{
+				alert(err.code);
+			},
+			);
+	});
+	function add1(file,fileurl,cat)
+	{
+		// var fileurl;
+		// ptask.getDownloadURL().then(function(url){
+		// 	fileurl=url;
+		// 	alert(fileurl);
+		// });
+		stask.getDownloadURL().then(function(url){
+			dbref.ref(cat+'/'+file).set({
+    	filename: file,
+    	imageurl: url,
+    	downloadPath: fileurl
+    });
+			alert(fileurl);
+			alert(url);
+			alert("Sent");
+		});
+	// alert("Hello");
+	}
+	function add2(file,cat)
+	{
+		// var fileurl;
+		// ptask.getDownloadURL().then(function(url){
+		// 	fileurl=url;
+		// });
+		ptask.getDownloadURL().then(function(url){
+			dbref.ref(cat+'/'+file).set({
+    	filename: file,
+    	downloadPath: url,
+    	// downloadPath: fileurl
+    });
+			alert("Sent");
+		});
+	// alert("Hello");
+	}
+</script>
+</body>
+</html>

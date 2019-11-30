@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Biography</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+  <script src="firebase.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.css" rel="stylesheet">
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js "></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.css" rel="stylesheet">
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <style type="text/css">
+  html,body
+    {
+      height: 100%
+    }
+    .parallax{
+      background-image: url("images/dr471.jpg");
+      min-height: 685px;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+justify-content: center;
+align-items: center;
+   }
+    .parallax1{
+      background-image: url("images/dr152.jpg");
+      height: inherit;
+      min-height: 50px;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      display: flex;
+      overflow: hidden;
+      justify-content: center;
+      align-items: center;
+      margin-top: -10px;
+      width: 100%;
+    }
+    .image
+    {
+
+    }
+
+    .image:hover {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-5px, -2px) rotate(-3deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+#f1_container {
+  position: relative;
+  /*margin: 10px auto;*/
+  margin-left: 1.6%;
+  margin-right: 1.6%;
+  z-index: 1;
+  float: left;
+}
+#f1_container {
+  perspective: 100;
+}
+#f1_card {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: all 1.0s linear;
+}
+#f1_container:hover #f1_card {
+  transform: rotateY(180deg);
+  box-shadow: -5px 5px 5px #aaa;
+}
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.face.back {
+  display: block;
+  transform: rotateY(180deg);
+  box-sizing: border-box;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  background-color: #aaa;
+}
+.parallax2{
+      background-image: url("images/dr121.jpg");
+      height: auto;
+      min-height: 50px;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 5%;
+      width: 100%;
+      /*padding-top: 7%;*/
+    }
+    .parallax3{
+      background-image: url("images/gifa.jpg");
+      min-height: 650px;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }   
+.image1{
+  height:100%;
+  width:40%;
+  background-image: url('images/dr275.jpg');
+  position: relative;
+}
+.image1{
+  transition: 0.70s;
+  -webkit-transition: 0.70s;
+  -moz-transition: 0.70s;
+  -ms-transition: 0.70s;
+  -o-transition: 0.70s;
+   display: block;
+   bottom: 0px;
+}
+.image1:hover{
+   transition: 0.70s;
+  -webkit-transition: 0.70s;
+  -moz-transition: 0.70s;
+  -ms-transition: 0.70s;
+  -o-transition: 0.70s;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+#overlay {
+/*background-color:rgba(0,0,0,.65);*/
+height:100%;
+left:0;
+position:relative;
+top:0;
+overflow: hidden;
+transition:background-color 300ms ease;
+width:100%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.btn-primary-outline {
+  background-color: transparent;
+  border-color: #ccc;
+}
+
+  </style>
+
+
+</head>
+<body style="overflow-x: hidden;">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="margin-top: 0px;">
+
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="index.html">Darshan Raval</a>
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="video.html">Videos</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="audio.html">Audios
+            <!-- <span class="sr-only">(current)</span> -->
+            </a>
+      </li>
+    </ul>
+    <div class="dropdown">
+    <button class="btn btn-primary-outline dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="name" style="margin-right: 10px;font-size: 20px;font-family: sans-serif;color: white">Darshan Raval</button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: transparent;border-color: #ccc;border:none;">
+    <a class="dropdown-item" style="background-color: transparent;border-color: #ccc;"><button type="button" class="btn btn-primary-outline" onclick="logOut()" id="log" style="position: relative;margin-left:100%;">Logout</button></a>
+    </div>
+</div>
+    <!-- Links -->
+    <img src="images/dr19.jpg" style="height: 60px;width:60px;border-radius: 20px;margin-right: 1%" id="photo">
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+  <div class="parallax">
+    <div style="width: 50%">
+        <div style="font-size: 3.8vw;color: white;font-family: sans-serif;">Biography of Darshan Raval</div>
+        <div style="width: 96%;background-color: white;border-color: white;border: 1px white solid;margin-bottom: 4%;"></div>
+    </div>
+    </div>
+
+<div style="height: auto;min-height: 50px;padding:5%;background-color:#2E2E2E;color: white;font-size:1.5vw;width: 100%">
+<img src="images/dr35.jpg" alt="Pineapple" class="image" style="float: right;height: 70%;width: 30%">
+Darshan Raval was Born on October 18,1994.<br>Darshan was born in Ahmedabad.His father is Rahendra Raval and mother is Rajal Raval.<br>Darshan  Raval began his career as one of the contestants of Yo Yo Honey Singh's TV singing <br>reality show India's Raw Star on Star Plus in 2014.<br>Before India's Raw Star,he is the founder of Dip Zip band. He was the lead singer of this group.<br> Mera Dil Dil Dil song was sang by him when he was in this group.<br>He got his first Bollywood break with the song "Jab Tum Chaho" Salman Khan starrer Prem <br>Ratan Dhan Payo.<br>Raval's career took the turning point with his Bollywood entry singing the popular songs such as<br> It's Time to Party, Jab Tum Chaho, Bekhudi and Kheech Meri Photo.
+</div>
+<div class="parallax1" >
+
+  <div style="width: 90%;height: 75%;">
+
+  <div id="f1_container" style="width: 30%;height: 100%">
+<div id="f1_card" class="shadow">
+  <div class="front face">
+    <img src="images/dr127.jpg" style="width: 100%;height: 100%;" />
+  </div>
+  <div class="back face center">
+    <p style="font-family: sans-serif;font-size:1vw;position: relative;margin-top: 200px; ">Darshan's Father Mr. Rajendra Raval is writer. He is a Senior Journalist in Gujarat.</p>
+  </div>
+</div>
+</div>
+<div id="f1_container" style="width: 30%;height: 100%">
+<div id="f1_card" class="shadow">
+  <div class="front face">
+    <img src="images/dr156.jpg" style="width: 100%;height: 100%;" />
+  </div>
+  <div class="back face center">
+    <p style="font-family: sans-serif;font-size:1vw;position: relative;margin-top: 200px; ">Darshan Raval's mother Mrs. Rajal Raval was housewife.</p>
+  </div>
+</div>
+</div>
+<div id="f1_container" style="width: 30%;height: 100%">
+<div id="f1_card" class="shadow">
+  <div class="front face">
+    <img src="images/dr172.jpg" style="width: 100%;height: 100%;" />
+  </div>
+  <div class="back face center">
+    <p style="font-family: sans-serif;font-size:1vw;position: relative;margin-top: 200px; ">Darshan is an Indian Playback singer,songwriter,performer and composer from Ahmedabad,India.</p>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<div class="parallax2">
+  <div style="height:100%;padding: 2%;font-size:2vw;font-family: sans-serif;color: white;overflow: hidden;">
+      <img src="images/dr275.jpg" class="image1" style="float: left;height: 80%;width: 25%;margin-right: 5%">
+    His smile has a child-like innocence, and his chocolate-boy good looks and easy charm win million hearts,while soulful voice makes nubile hearts aflutter.<br><br>He had won Ahmedabad Times Most Desirable Man of 2017.<br>
+</div>
+</div>
+<div class="parallax3">
+  <span style="color: white;font-size: 40px;padding-left: 30px;font-family: sans-serif;position: absolute;margin-top: 300px;">
+    In 2016,the GIFA Award was presented to him for being the Best Playback Singer(Male).
+  </span>
+</div>
+<div style="height:auto;background-color:#2E2E2E;font-size: 2vw;font-family: sans-serif;padding: 5%;color: white">
+  For Darshan Raval 2018 was really memorable year as it gave hime blockbuster songs like Chogada Tara from LoveYari and Kamariya from Mitron. The Two tracks are currently on #1 and #2 respectively on Mirchi Top 20.
+</div>
+<!-- Footer -->
+<footer class="page-footer font-small stylish-color-dark " style="position: relative;margin-top: -0px;">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="" id="footeremail"></a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+<script type="text/javascript">
+  firebase.auth().onAuthStateChanged(function(user){
+            if(user)
+            {
+                document.getElementById("name").innerHTML=user.displayName;
+                document.getElementById("photo").src=user.photoURL;
+                document.getElementById("footeremail").innerHTML=user.email;
+                document.getElementById("log").style.color="red";
+            }
+        })
+  function logOut(){
+          firebase.auth().signOut().then(function() {
+         // Sign-out successful.
+             // document.getElementById("name").innerHTML="Darshan raval";
+             //    document.getElementById("photo").src="images/dr19.jpg";
+             //    document.getElementById("footeremail").innerHTML="darshanRaval@gmail.com";
+                window.open('index.html','_self');
+            }).catch(function(error) {
+             // An error happened.
+            });
+      }
+</script>
+</body>
+</html>

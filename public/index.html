@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Darshan Raval</title>
+    <meta name="Darshan Raval" content="Darshan Raval site" />
+    <meta name="darshanravaldz" content="This is an example of a meta description. This will often show up in search results.">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
+    <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+    <script src="firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.css" rel="stylesheet">
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<style type="text/css">
+		.parallax1{
+			background-image: url("images/dr25.jpg");
+			min-height: 650px;
+			opacity: 1;
+			box-shadow: inset ;
+			background-attachment:fixed;
+			background-position: top;
+			background-repeat: no-repeat;
+			background-size: cover;
+           /* display: flex;
+            justify-content: center;
+            align-items: center;*/
+		}
+		.parallax2{
+			background-image: url("images/dr27.jpg");
+			min-height: 650px;
+			background-attachment: fixed;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+		/* Global Styles */
+
+@import url("//fonts.googleapis.com/css?family=Poiret+One|Josefin+Sans");
+
+html,body {
+color:#fddaec;
+font-family:"Josefin Sans", sans-serif;
+font-size:100%;
+height:100%;
+line-height:1.45;
+  overflow-x: hidden;
+  /*overflow-y: scroll;*/
+}
+
+
+/* Video Overlay */
+
+#overlay {
+/*background-color:rgba(0,0,0,.65);*/
+height:100%;
+left:0;
+position:relative;
+top:0;
+overflow: hidden;
+transition:background-color 300ms ease;
+width:100%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.fade { background-color:rgba(0,0,0,.85) !important; }
+
+
+/* Hero Video + Fallback */
+
+#hero-vid {
+backface-visibility:hidden;
+/*background:url("http://www.markhillard.com/sandbox/media/polina.jpg") no-repeat scroll 0 0 #000;*/
+background-size:cover;
+bottom:0;
+/*height:auto;*/
+min-height:100%;
+min-width:100%;
+perspective:100;
+/*background-repeat: no-repeat;*/
+position:fixed;
+right:0;
+width:auto;
+z-index:-1;
+}
+
+#hero-pic {
+display:block;
+height:auto;
+width:100%;
+}
+
+#state {
+bottom:0;
+cursor:pointer;
+font-size:2.25rem;
+left:0;
+line-height:1;
+padding:2rem 2.5rem 1.65rem;
+position:absolute;
+}
+
+
+
+
+
+/* Media Queries */
+
+@media only screen and(min-width:480px) and (max-width:768px){
+    #overlay { height:auto; }
+}
+
+
+/* Visibility Helpers */
+
+@media only screen and (min-width:769px) {
+    .visible-mobile,.visible-tablet,.hidden-desktop { display:none !important; }
+}
+
+@media only screen and (min-width:480px) and (max-width:768px) {
+    .visible-mobile,.hidden-tablet,.visible-desktop { display:none !important; }
+}
+
+@media only screen and (max-width:479px) {
+    .hidden-mobile,.visible-tablet,.visible-desktop { display:none !important; }
+}
+h1{
+	font-family: sans-serif;
+	position: relative;
+	padding-top: 190px;
+	font-size: 2.84vw;
+    justify-content: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    /*background-color: red;*/
+}
+.line1{
+	height: 3px;
+	width: 47%;
+	background-color: white;
+	position: relative;
+	margin-left: 25%;
+    margin-right: 25%;
+}
+h6{
+	position: relative;
+	margin-left: 30%;
+    margin-right: 25%;
+    font-size: 2vw;
+}
+.about{
+	position: relative;
+	margin-left: 47%;
+    margin-right: 83%;
+	border-radius: 5px;
+	width: auto;
+    padding-left: 1%;
+    padding-right: 1%;
+	border: none;
+	margin-top: 15px;
+	background-color: #2F4F4F;
+	color: white;
+	height: 40px;
+	font-family: sans-serif;
+}
+ .email{
+		height: 30px;
+		width: 250px;
+		position: relative;
+		margin-left: 450px;
+		margin-top: 70px;
+		border-radius: 5px;
+		border: none;
+		font-size: 16px;
+}
+.password{
+		height: 30px;
+		width: 250px;
+		position: relative;
+		margin-left: 10px;
+		border-radius: 5px;
+		border: none;
+		font-size: 16px;
+}
+.login{
+	height: 30px;
+	width: 70px;
+	font-size: 16px;
+	position: relative;
+	margin-bottom: 300px;
+	margin-left: 10px;
+	border: none;
+	border-radius: 5px;
+	font-family: sans-serif;
+	background-color: #696969;
+	color: white;
+}
+.wrapper {
+    margin: 0 auto;
+    width: 90%;
+}
+
+header {
+    width: 100%;
+    max-width: 100%;
+    position: fixed;
+    z-index: 999;
+    background: rgba(50,50,50,.95);
+    box-shadow: 0 10px 20px rgba(50,50,50,.95);
+}
+
+nav {
+    margin-top: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+nav a {
+    font: 1.2em/1em sans-serif;
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+}
+.gallery-block{
+  padding-bottom: 60px;
+  padding-top: 60px;
+}
+
+.gallery-block .heading{
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.gallery-block .heading h2{
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.gallery-block.compact-gallery .item{
+  overflow: hidden;
+  margin-bottom: 0;
+  background: black;
+  opacity: 1;
+}
+
+.gallery-block.compact-gallery .item .image{
+  transition: 0.8s ease;
+}
+
+.gallery-block.compact-gallery .item .info{
+  position: relative;
+    display: inline-block;
+}
+
+.gallery-block.compact-gallery .item .description{
+  display: grid;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+    padding: 10px;
+    font-size: 17px;
+    line-height: 18px;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    opacity: 1;
+    color: #fff;
+    transition: 0.8s ease;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.39));
+}
+
+.gallery-block.compact-gallery .item .description .description-heading{
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.gallery-block.compact-gallery .item .description .description-body{
+  font-size: 0.8em;
+  margin-top: 10px;
+  font-weight: 300;
+}
+
+@media (min-width: 576px) {
+
+  .gallery-block.compact-gallery .item .description {
+    opacity: 0; 
+  }
+
+  .gallery-block.compact-gallery .item a:hover .description {
+    opacity: 1; 
+  } 
+
+  .gallery-block .zoom-on-hover:hover .image {
+    transform: scale(1.3);
+    opacity: 0.7; 
+  }
+}
+#alert
+{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: #BBEBBF;  
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    z-index: 50;
+    opacity: 1;
+}
+.visible
+{
+    width: 100%;
+    height: auto;
+}
+/*#msg
+{
+    height: 30%;
+    width: 30%;
+    position: relative;
+    margin: 20%;
+    margin-left: 35%;
+    background-color: white;
+}*/
+#heading,#close{
+    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 100;
+    letter-spacing: 0.5px;
+}
+#heading{
+    font-size: 34px;
+    text-align: center;
+    color: #666666;
+    margin: 0 0 0 0;
+}
+#close{
+    background: #89BDD3;
+    border: 0;
+    border-radius: 4px;
+    padding: 7px 15px;
+    font-size: 16px;
+    color: #FFFFFF;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        background: lighten(#89BDD3, 10%);
+    }
+}
+.parent
+{
+    color: black;
+    font-family: sans-serif;
+}
+.btn-primary-outline {
+  background-color: transparent;
+  border-color: #ccc;
+}
+.popup {
+  margin: 20% auto;
+  padding: 1%;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+
+  .popup{
+    width: 70%;
+  }
+}
+#arowwrap{
+   
+ }
+
+</style>
+	<script type="text/javascript">
+				// Get the modal
+// var modal = document.getElementsByClass('myModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementsByClassName("myImg");
+// var modalImg = document.getElementById("img01");
+// var captionText = document.getElementsByClass('caption');
+img.onclick = function(){
+    // modal.style.display = "block";
+    // modalImg.src = this.src;
+    // captionText.innerHTML = this.alt;
+    alert("Hello Billu");
+}
+
+// Get the <span> element that closes the modal
+// var span = document.getElementsByClassName("close")[0];
+
+// // When the user clicks on <span> (x), close the modal
+// span.onclick = function() { 
+//   modal.style.display = "none";
+// }
+	</script>
+</head>
+<body>
+	<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="margin-top: 0px;">
+
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="index.html">Darshan Raval</a>
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item" id="videolink">
+        <a class="nav-link" href="video.html">Videos</a>
+      </li>
+      <li class="nav-item" id="audiolink">
+        <a class="nav-link" href="audio.html">Audios</a>
+      </li>
+    </ul>
+    <!-- Links -->
+    <div class="dropdown">
+    <button class="btn btn-primary-outline dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="name" style="margin-right: 10px;font-size: 20px;font-family: sans-serif;color: white">Darshan Raval</button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: transparent;border-color: #ccc;border:none;">
+    <a class="dropdown-item" style="background-color: transparent;border-color: #ccc;" href="#footer"><button type="button" class="btn btn-primary-outline" onclick="logOut()" id="log" style="position: relative;margin-left:100%;">Login</button></a>
+    </div>
+</div>
+    <img src="images/dr19.jpg" style="height: 60px;width:60px;border-radius: 20px;margin-right: 1%" id="photo">
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+  <div id="alert" >
+        <!-- <div style="height: 20%;width: 40%;background-color: white;margin-top: 20%;margin-left: 30%">
+            <h3 style="color: black;margin: 10%;">Login karo pehle</h3>
+        </div> -->
+        <div class="popup">
+        <h2>Login</h2>
+        <a class="close" onclick="dalertt()" style="color: #100021">&times;</a>
+        <div class="content" style="color: black">
+            You need to login first.
+        </div>
+    </div>
+</div>
+	<div id="overlay" >
+    <video id="hero-vid" autoplay loop muted>
+        <source type="video/mp4" src="video/bg.mp4"></source>
+    </video>
+    <!-- <span style="position: absolute;color: white;margin-top: 320px;margin-left: 25%;margin-right: 20%;font-weight: 10em;font-size: 3.5vw;font-family: sans-serif;">Darshan Raval Official Website</span>
+    <div id="line3" class="overlay" style="height: 5px;width:49%;background-color: white;position: absolute;margin-left 
+    : 25%;margin-right: 20%;margin-top: 400px;border-radius: 5px; "></div>
+    <div style="position: absolute;columns: white;font-size: 2vw;margin-left: 45%;margin-right: 20%;margin-top: 420px;font-family: sans-serif;">Youngest Singer</div> -->
+    <center>
+    <div style="margin-right: -20%">
+        <div style="font-size: 4vw;color: white;font-family: sans-serif;">Darshan Raval Official Website</div>
+        <div style="width: 84%;background-color: white;border-color: white;border: 1px white solid;margin-bottom: 4%;"></div>
+        <div>Youngest Singer</div>
+    </div>
+    </center>
+    <div style="width: 12%;z-index: 25;position: relative;bottom: -33%;height: 10%;float: right;right: -15%;font-size: 3vw;text-align: center;"><a href="https://www.facebook.com/DarshanRavalDZ/"><i class="fab fa-facebook-f" style="margin: 5%;color: white;"></i></a><a href="https://twitter.com/DarshanRavalDZ"><i class="fab fa-twitter" style="margin: 5%;color: white;"></i></a><a href="https://www.instagram.com/darshanravaldz/"><i class="fab fa-instagram" style="margin: 5%;color: white"></i></a></div>
+</div>
+	<div style="height: auto;background-color: black;margin-top: -88px;padding-top:15px;padding-left: 18px;
+    padding-right: 18px;text-align: center;font-size:2.4vw;padding-bottom: 20px" class="overlay">
+		Darshan Raval is an young YouTube sensation and play back singer. He is one of the YouTuber who gained popularility for his originals. He was Known for his appearance on th Indian reality show India's Raw Star.
+	</div>
+	<div class="parallax1">
+		<h1>BIOGRAPHY OF DARSHAN RAVAL</h1>
+		<div class="line1"></div>
+		<h6>Get To Know More About Darshan Raval</h6>
+		<button class="about" onclick="About()">About</button>
+	</div>
+	<div class="parallax2">
+        <section class="gallery-block compact-gallery">
+        <div class="container">
+            <div class="heading">
+                <h2>Darshan Raval Image Gallery</h2>
+            </div>
+            
+            <div class="row no-gutters">
+                <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                    <a class="lightbox" href="images/dr36.jpg">
+                        <img class="img-fluid image" src="images/dr36.jpg">
+                        <span class="description">
+                            <span class="description-heading"></span>
+                            <span class="description-body"></span>
+                        </span>
+                    </a>
+                </div>
+                
+                
+                <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                    <a class="lightbox" href="images/dr2.jpg" style="width: 100%;height: 100%;">
+                        <img class="img-fluid image" src="images/dr2.jpg" style="width: 100%;height: 100%;">
+                        <span class="description">
+                            <span class="description-heading"></span>
+                            <span class="description-body"></span>
+                        </span>
+                    </a>
+                </div>
+                
+                
+                <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                    <a class="lightbox" href="images/dr70.jpg">
+                        <img class="img-fluid image" src="images/dr70.jpg">
+                        <span class="description">
+                            <span class="description-heading"></span>
+                            <span class="description-body"></span>
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                    <a class="lightbox" href="images/dr48.jpg">
+                        <img class="img-fluid image" src="images/dr48.jpg">
+                        <span class="description">
+                            <span class="description-heading"></span>
+                            <span class="description-body"></span>
+                        </span>
+                    </a>
+                </div>
+                
+                
+                <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                    <a class="lightbox" href="images/dr39.jpg">
+                        <img class="img-fluid image" src="images/dr39.jpg">
+                        <span class="description">
+                            <span class="description-heading"></span>
+                            <span class="description-body"></span>
+                        </span>
+                    </a>
+                </div>
+                
+                
+                <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                    <a class="lightbox" href="images/dr42.jpg">
+                        <img class="img-fluid image" src="images/dr42.jpg">
+                        <span class="description">
+                            <span class="description-heading"></span>
+                            <span class="description-body"></span>
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                    <a class="lightbox" href="images/dr9.jpg">
+                        <img class="img-fluid image" src="images/dr9.jpg">
+                        <span class="description">
+                            <span class="description-heading"></span>
+                            <span class="description-body"></span>
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                    <a class="lightbox" href="images/dr8.jpg">
+                        <img class="img-fluid image" src="images/dr8.jpg">
+                        <span class="description">
+                            <span class="description-heading"></span>
+                            <span class="description-body"></span>
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                    <a class="lightbox" href="images/dr10.jpg">
+                        <img class="img-fluid image" src="images/dr10.jpg">
+                        <span class="description">
+                            <span class="description-heading">  </span>
+                            <span class="description-body"></span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <a href="gallery.html" id="gallerylink">
+    <i class="fas fa-arrow-circle-right" style="position: relative;float: right;margin-right: 0%;margin-top: -15%;width: 10%;height: 10%;font-size: 50px;color: #FFE4C4;"></i></a>
+	</div>
+	<!-- Footer -->
+<footer class="page-footer font-small stylish-color-dark pt-1" style="margin-top: 0px;background-color: red;" id="footer">
+   
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="color: black;font-family: sans-serif;">Comments</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="comment">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-unique" data-dismiss="modal"  onclick="del()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <!--footer link-->
+    <div class="container text-center text-md-left">
+        <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold " style="color: black">Write to us</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+       <!--  <div class="md-form mb-5">
+          <i class="fas fa-user prefix grey-text"></i>
+          <input type="text" id="" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="form34">Your name</label>
+        </div> -->
+        <div class="md-form">
+          <i class="fas fa-pen-fancy prefix grey-text"></i>
+          <textarea type="text" id="c_feed" class="md-textarea form-control" rows="4"></textarea>
+          <label data-error="wrong" data-success="right" for="form8">Your feedback</label>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-unique" onclick="send()">Send <i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        
+        </div>
+      </div>
+        </div>
+
+    <!--footer link-->
+    <div class="container text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-4 mx-auto">
+
+          <!-- Content -->
+          <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Contact Us</h5>
+          <p>We would &hearts; to have your feedback on our website. We would recommend to use this website on laptop/desktop to have a better view of this site. For any query you can connect us on the following details.</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none">
+
+        <!-- Grid column -->
+        <div class="col-md-2 mx-auto">
+
+          <!-- Links -->
+          <h2 class="font-weight-bold text-uppercase mt-3 mb-4"><i class="fas fa-envelope"></i></h2>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="https://mail.google.com/artigaund2210" style="font-size: 0.8vw">artigaund2210@gmail.com</a>
+            </li>
+            <li>
+              <a href="#!" style="font-size: 0.8vw">prakashanupam01@gmail.com</a>
+            </li>
+            
+          </ul>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none">
+
+        <!-- Grid column -->
+        <div class="col-md-2 mx-auto">
+
+          <!-- Links -->
+          <h2 class="font-weight-bold text-uppercase mt-3 mb-4"><i class="fab fa-facebook-f"></i></h2>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="https://www.facebook.com/mili.angel.967" style="font-size: 0.8vw">Arti Gaund</a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/prakashanupam01" style="font-size: 0.8vw">Anupam Prakash</a>
+            </li>
+          </ul>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none">
+
+        <!-- Grid column -->
+        <div class="col-md-2 mx-auto">
+
+          <!-- Links -->
+          <h2 class="font-weight-bold text-uppercase mt-3 mb-4"><i class="fab fa-instagram"></i></h2>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="https://www.instagram.com/artigaund2210/" style="font-size: 0.8vw">Arti Gaund</a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/prakashanupam01/" style="font-size: 0.8vw">Anupam Prakash</a>
+            </li>
+          </ul>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <hr>
+    <!-- Call to action -->
+    <ul class="list-unstyled list-inline text-center py-2">
+         
+      <li class="list-inline-item">
+        <h5 class="mb-1">Register for free</h5>
+      </li>
+      <li class="list-inline-item">
+        <a href="#!" class="btn btn-danger btn-rounded" style="border-radius: 23px;" onclick="load()">Sign up!</a>
+      </li>
+      <li>
+        <div class="firebaseui-card-content">
+          <div id="firebseui-auth-container">
+              <a href="index4.html" style="position: relative;padding-left: 80%;"></a>
+          </div>
+      </div>
+      </li>
+      <div class="text-center" style="position: relative;">
+  <a href="" class="btn btn-default btn-rounded mb-4s" data-toggle="modal" data-target="#modalContactForm">Your feedback</a>
+  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModalLong" onclick="feed()" style="position: relative;margin-right: 2%;margin-top: 0.5%">
+  View Comments
+    </button>
+</div>
+    </ul>
+    <!-- Call to action -->
+
+    <hr>
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="" id="footeremail"></a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+	<script type="text/javascript">
+		$(document).ready(function () {
+    $(window).on('load scroll', function () {
+        var scrolled = $(this).scrollTop();
+        $('#title').css({
+            'transform': 'translate3d(0, ' + -(scrolled * 0.2) + 'px, 0)', // parallax (20% scroll rate)
+            'opacity': 1 - scrolled / 400 // fade out at 400px from top
+        });
+        $('#hero-vid').css('transform', 'translate3d(0, ' + -(scrolled * 0.25) + 'px, 0)'); // parallax (25% scroll rate)
+    });
+    
+    // video controls
+    $('#state').on('click', function () {
+        var video = $('#hero-vid').get(0);
+        var icons = $('#state > span');
+        $('#overlay').toggleClass('fade');
+        if (video.paused) {
+            video.play();
+            icons.removeClass('fa-play').addClass('fa-pause');
+        } else {
+            video.pause();
+            icons.removeClass('fa-pause').addClass('fa-play');
+        }
+    });
+});
+        function alertt()
+        {
+            document.getElementById("alert").style.display="block";
+            // document.getElementById("alert").style.display="none";
+        }
+        function dalertt()
+        {
+            // document.getElementById("alert").style.display="block";
+            document.getElementById("alert").style.display="none";
+        }
+        function del()
+        {
+            // alert("fekrb");
+            var myNode = document.getElementById("comment");
+            while (myNode.firstChild) {
+            myNode.removeChild(myNode.firstChild);
+        }
+        }
+	</script>
+	<script type="text/javascript">
+        var c_user;
+		function load()
+		{
+			var uiConfig = {
+  // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+        signInFlow: 'popup',
+  signInSuccessUrl: 'index.html',
+  signInOptions: [
+    // Leave the lines as is for the providers you want to offer your users.
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+  ],
+  // Terms of service url.
+  tosUrl: '<your-tos-url>',
+  // Privacy policy url.
+  privacyPolicyUrl: '<your-privacy-policy-url>'
+};
+// alert("Signup");
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+ui.start('#firebseui-auth-container',uiConfig);
+		}
+        firebase.auth().onAuthStateChanged(function(user){
+            if(user)
+            {
+                c_user=user;
+                current_user=user;
+                document.getElementById("name").innerHTML=user.displayName;
+                document.getElementById("photo").src=user.photoURL;
+                document.getElementById("footeremail").innerHTML=user.email;
+                document.getElementById("log").innerHTML="logOut";
+            }
+            else
+            {
+                document.getElementById("videolink").onclick = function() {alertt();return false;};
+                document.getElementById("audiolink").onclick = function() {alertt();return false;};
+                 document.getElementById("gallerylink").onclick = function() {alertt();return false;};
+            }
+        })
+         function send()
+          {
+            var fb=document.getElementById("c_feed").value;
+            // alert(fb);
+            var dbref=firebase.database();
+            // alert(dbref);
+            dbref.ref('feedback/'+c_user.displayName).set({
+                username: c_user.displayName,
+                useremail: c_user.email,
+                feedback: fb
+            });
+            alert("Feedback succesfully submitted");
+            // alert(c_user.displayName);
+
+          }
+           function About()
+          {
+            if(c_user)
+            window.open('biography.html','_self');
+            else
+            alertt();
+          }
+
+          function logOut(){
+          firebase.auth().signOut().then(function() {
+         // Sign-out successful.
+             document.getElementById("name").innerHTML="Darshan raval";
+                document.getElementById("photo").src="images/dr19.jpg";
+                document.getElementById("footeremail").innerHTML="darshanRaval@gmail.com";
+                document.getElementById("log").innerHTML="Log In";
+
+                c_user="";
+            }).catch(function(error) {
+             // An error happened.
+            });
+      }
+      const preObject=document.getElementById("comment");
+      function feed()
+      {
+        // alert("Feeds");
+        var uprefUpload= firebase.database().ref().child('feedback/');
+  var uprefList=uprefUpload;
+  uprefUpload.on('value',snap =>{
+
+     for(key in snap.val())
+    {
+      flag=1;
+      var file = snap.val()[key];
+      // alert(file.username);
+      // alert(file.feedback);
+      preObject.innerHTML+="<br><div class=parent>"+file.username+"<span>&#58;</span>&nbsp"+file.feedback+"</div>";
+    }
+    if(flag==0)
+      alert("No files found for download");
+  });
+      }
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script>
+          baguetteBox.run('.compact-gallery',{animation:'slideIn'});
+      </script>
+</body>
+</html>

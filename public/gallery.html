@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gallery Page</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+	<script src="firebase.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/lightbox.min.css">
+    <script src="js/lightbox-plus-jquery.min.js"></script>
+    <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.css" rel="stylesheet">
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.6.1/css/mdb.min.css" rel="stylesheet">
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.6.1/js/mdb.min.js"></script>
+	<style type="text/css">
+		.parallax{
+      background-image: url("images/dr470.jpg");
+      min-height: 685px;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+justify-content: center;
+align-items: center;
+   }
+		    	
+.imagediv
+{
+	height: 400px;
+	width: 300px;
+	float: left;
+	overflow: hidden;
+	position:relative;
+	margin-top:0px;
+	-ms-flex: 25%; /* IE10 */
+    flex: 25%;
+    max-width: 25%;
+    padding: 0px;
+}
+.imagediv img {
+    margin-top: 0px;
+    vertical-align: middle;
+}
+.image
+{
+	width: 100%;
+  height: 100%;
+  background-color: black; /* fallback color */
+  background-position: center;
+  background-size: cover;
+  transition: all .5s;
+}
+.imagediv:hover .image,
+.imagediv:focus .image {
+  transform: scale(1.2);
+}
+.image::before {
+  content: "";
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.imagediv:hover .image:before,
+.imagediv:focus .image:before {
+  display: block;
+}
+/*.lightbox
+{
+	height: 100%;
+	width: 100%;
+}
+#container div
+{
+	display: inline-block;
+}*/
+#container{
+	display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    padding: 0px;
+}
+@media screen and (max-width: 800px) {
+    .imagediv {
+        -ms-flex: 50%;
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .imagediv {
+        -ms-flex: 100%;
+        flex: 100%;
+        max-width: 100%;
+    }
+}
+.btn-primary-outline {
+  background-color: transparent;
+  border-color: #ccc;
+}
+
+	</style>
+
+
+</head>
+<body onload="feed()">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="margin-top: 0px;">
+
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="index.html">Darshan Raval</a>
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="video.html">Videos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="audio.html">Audios
+            <!-- <span class="sr-only">(current)</span> -->
+            </a>
+      </li>
+    </ul>
+    <div class="dropdown">
+    <button class="btn btn-primary-outline dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="name" style="margin-right: 10px;font-size: 20px;font-family: sans-serif;color: white">Darshan Raval</button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: transparent;border-color: #ccc;border:none;">
+    <a class="dropdown-item" style="background-color: transparent;border-color: #ccc;"><button type="button" class="btn btn-primary-outline" onclick="logOut()" id="log" style="position: relative;margin-left:100%;">Logout</button></a>
+    </div> 
+</div>
+    <!-- Links -->
+    <img src="images/dr19.jpg" style="height: 60px;width:60px;border-radius: 20px;margin-right: 1%" id="photo">
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<div class="parallax">
+    <div style="width: 50%">
+        <div style="font-size: 3vw;color: white;font-family: sans-serif;">Darshan Raval Picture's Gallery</div>
+        <div style="width: 86%;background-color: white;border-color: white;border: 1px white solid;margin-bottom: 4%;"></div>
+    </div>
+    </div>
+	<!-- <div class="parallax">
+		<span style="position: absolute;color: white;margin-top: 280px;margin-left: 450px;font-weight: 10em;font-size: 60px;font-family: sans-serif;">Darshan Raval Picture's Gallery</span>
+    <div id="line3" style="height: 5px;width: 840px;background-color: white;position: absolute;margin-left: 450px;margin-top: 380px;border-radius: 5px; "></div>
+	</div> -->
+
+<div style="height:auto;background-color:#2E2E2E;font-size: 2vw;font-family: sans-serif;padding: 5%;color: white">
+    		
+ <div id="container"  class="row no-gutters" style="padding-left: 0px;padding-top: 0px;">
+    			
+ 	</div>
+</div>
+<footer class="page-footer font-small stylish-color-dark " style="position: relative;margin-top: -0px;">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="" id="footeremail"></a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script type="text/javascript">
+	const preObject=document.getElementById("container");
+	function feed()
+	{
+ // alert("Feeds");
+ var flag=0;
+  var uprefUpload= firebase.database().ref().child('Images/');
+  var uprefList=uprefUpload;
+  uprefUpload.on('value',snap =>{
+
+     for(key in snap.val())
+    {
+      flag=1;
+      var file = snap.val()[key];
+      // alert(file.downloadPath);
+      preObject.innerHTML+="<div class=imagediv><a class= lightbox href='"+file.downloadPath+"' data-lightbox=mygallery style=height:100%;width:100%;><img class=image src='"+file.downloadPath+"' style=width:100%;height:100%;></a></div>";
+    }
+    if(flag==0)
+      alert("No files found for download");
+  });
+	}
+</script>
+<script type="text/javascript">
+	firebase.auth().onAuthStateChanged(function(user){
+            if(user)
+            {
+                document.getElementById("name").innerHTML=user.displayName;
+                document.getElementById("photo").src=user.photoURL;
+                document.getElementById("footeremail").innerHTML=user.email;
+                document.getElementById("log").innerHTML="logOut";
+            }
+        })
+  function logOut(){
+          firebase.auth().signOut().then(function() {
+         // Sign-out successful.
+               window.open('index.html','_self');
+             // document.getElementById("name").innerHTML="Darshan raval";
+             //    document.getElementById("photo").src="images/dr19.jpg";
+             //    document.getElementById("footeremail").innerHTML="darshanRaval@gmail.com";
+             //    document.getElementById("log").innerHTML="Log In";
+            }).catch(function(error) {
+             // An error happened.
+            });
+      }
+</script>
+</body>
+</html>
